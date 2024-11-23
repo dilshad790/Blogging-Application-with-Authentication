@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HomePage</title>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+
+
+    <%- include('./partials/nav') %>
+    
+     <!-- <%= JSON.stringify(user) %> -->
+    <!-- <%= JSON.stringify(blogs) %>  -->
+
+    <% if (locals.error) { %>
+        <div class="alert alert-danger mt-20" role="alert" >
+            Too many login attempts, please try again later"
+          </div>
+    <% } %>
+
+    <div class="container mt-3">
+        <% blogs.forEach(blog => { %>
+            <div class="card" style="width: 18rem;">
+                <img src="<%= blog.coverImageUrl %> " class="card-img-top" alt="Img1">
+                <div class="card-body">
+                  <h5 class="card-title"><%= blog.title %></h5>
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        
+                  <a href="#" class="btn btn-primary">View</a>        
+                </div>
+              </div>
+        <% }) %>
+    
+    </div>
+    <%- include('./partials/script') %>
+
+
+</body>
+</html>

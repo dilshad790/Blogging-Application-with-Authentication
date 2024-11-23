@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+<div class="mt-3">
+    <form action="/blog" method="post" enctype="multipart/form-data">
+        <!-- coverImage -->
+        <div class="mb-3">
+            <label for="coverImage" class="form-label">Cover Image</label>
+            <input type="file"
+            class="form-control"
+            id="coverImage"
+            name="coverImage">
+            
+        </div>
+        <!-- // title -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text"
+            class="form-control"
+            id="title"
+            name="title">
+        </div>
+        <!-- // body -->
+        <div class="body mb-3">
+            <label for="floatingTextarea">Body</label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="body" name="body"></textarea>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary">Submit</button>
+
+          </div>
+    </form>
+</div>
+    <%- include('./partials/script') %>
+</body>
+</html>
