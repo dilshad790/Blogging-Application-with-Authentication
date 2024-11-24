@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"))
 
 // routes
-app.use("/", staticRouter);
+app.use("/test", staticRouter);
 
 app.use("/user",userRouter);
 
@@ -40,7 +40,7 @@ app.use("/blog",blogRoutes);
 app.use(express.static(path.resolve("./public")))
 
 
-app.get("/test", async (req, res) => {
+app.get("/", async (req, res) => {
     console.log(req.user)
     const allBlogs=await Blog.find({})
      res.render("home",{
