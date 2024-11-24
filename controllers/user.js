@@ -14,7 +14,7 @@ if(!fullName || !email || !password)
     password:password,
   }) 
 
-  return res.redirect("/test");
+  return res.redirect("/");
 }
 
 async function handleSignIn(req,res)
@@ -23,7 +23,7 @@ const {email,password}= req.body;
 // console.log(email,password);
 try {
   const token=await USER.matchPassword(email,password)
-  return res.cookie("token",token).redirect("/test")
+  return res.cookie("token",token).redirect("/")
   // res.render("home",{
   //   user:user
   // })

@@ -24,7 +24,7 @@ const loginLimiter = rateLimit({
 router.post("/signin", loginLimiter, handleSignIn);
 
 router.get("/logout",(req,res)=>{
-    res.clearCookie("token").redirect("/test")
+    res.clearCookie("token").redirect("/")
 })
 
 module.exports=router;

@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"))
 
 // routes
-app.use("/test", staticRouter);
+app.use("/", staticRouter);
 
 app.use("/user",userRouter);
 
