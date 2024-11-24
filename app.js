@@ -1,6 +1,9 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
-const PORT = 8001;
+
+const PORT =process.env.PORT || 8000;
+
 const path = require("path");
 const userRouter = require("./routes/userRouter");
 const staticRouter = require("./routes/staticRouter")
@@ -12,10 +15,12 @@ const blogRoutes=require("./routes/blog")
 const Blog=require("./models/blog")
 
 // connect mongodb
-connectMongoDB("mongodb://127.0.0.1:27017/blogApp").then(() => console.log("Database connected")
+connectMongoDB(process.env.MONGO_URL).then(() => console.log("Database connected")
 )
     .catch(() => console.log("Failed to connect")
     )
+
+    // mongodb://127.0.0.1:27017/blogApp
 
 // middleware
 app.use(express.urlencoded({ extended: false })); // handle form data
@@ -48,6 +53,8 @@ app.get("/test", async (req, res) => {
 //     return res.render("home")
 // })
 
+// console.log("My name is",process.env.myname);
+console.log("My name is",process.env.myname);
 
 
 app.listen(PORT, (req, res) => console.log("server started at", PORT)
