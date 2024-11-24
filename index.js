@@ -54,7 +54,8 @@ app.get("/test", async (req, res) => {
 // })
 
 // console.log("My name is",process.env.myname);
-console.log("My name is",process.env.myname);
+// console.log("My name is",process.env.myname);
+
 
 
 app.listen(PORT, (req, res) => console.log("server started at", PORT)
