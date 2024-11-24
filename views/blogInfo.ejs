@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("./partials/head") %>
+</head>
+<body>
+    <%- include("./partials/nav") %>
+<div class="container mt-4">
+    <h3><%= blog.title %></h3>
+    <img src="<%= blog.coverImageUrl %>" width="400px" alt="">
+    <pre><%= blog.body %></pre>
+    <button class="btn btn-secondary"><a href="/test" style="text-decoration: none; color: white;">HomePage</a></button>
+</div>
+
+<div class="container mt-4">
+    
+<img src="<%= blog.createdBy.userProfileUrl %>" alt="" width="100px">
+<%= blog.createdBy.fullName %>
+
+</div>
+
+<!-- comments -->
+ <% if (locals.user) { %>
+  
+    <div class="container mt-3">
+        <form action="/blog/comments/<%= blog._id %>" method="post">
+            <!-- coverImage -->
+            
+            <!-- // title -->
+            <div class="mb-3">
+                
+                <h1>Comments (<%= comments.length %>)</h1>
+                
+            </div>
+            <!-- // body -->
+            <div class="body mb-3">
+                
+                <input class="form-control" placeholder="Leave a comment here" id="content" name="content"></input>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-sm btn-primary" type="submit">Add</button>
+                
+            </div>
+        </form>
+    </div>
+    <% } %>
+
+<%= console.log("Comments are",comments) %>
+<%= console.log("createdBy",comments.createdBy) %>
+
+<div class="container mt-4">
+    <% comments.forEach(comment => { %>
+        <div>
+            <!-- <img src="comment.createdBy.userProfileUrl" alt=""> -->
+            <!-- <img src="<%=   %>" alt=""> -->
+           
+              <img src="<%= comment.createdBy.userProfileUrl %>" alt="" width="30px">
+              <span><%= comment.createdBy.fullName %></span>
+        <pre><%= comment.content %></pre>
+     </div>
+    <% }) %>
+    </div>
+    <%- include("./partials/script") %>
+    
+</body>
+</html>

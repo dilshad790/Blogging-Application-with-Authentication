@@ -10,32 +10,41 @@
 
 
     <%- include('./partials/nav') %>
-    
-     <!-- <%= JSON.stringify(user) %> -->
-    <!-- <%= JSON.stringify(blogs) %>  -->
 
-    <% if (locals.error) { %>
-        <div class="alert alert-danger mt-20" role="alert" >
-            Too many login attempts, please try again later"
-          </div>
-    <% } %>
+        <!-- <%= JSON.stringify(user) %> -->
+        <!-- <%= JSON.stringify(blogs) %>  -->
 
-    <div class="container mt-3">
-        <% blogs.forEach(blog => { %>
-            <div class="card" style="width: 18rem;">
-                <img src="<%= blog.coverImageUrl %> " class="card-img-top" alt="Img1">
-                <div class="card-body">
-                  <h5 class="card-title"><%= blog.title %></h5>
-                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-        
-                  <a href="#" class="btn btn-primary">View</a>        
+        <% if (locals.error) { %>
+            <div class="alert alert-danger mt-20" role="alert">
+                Too many login attempts, please try again later"
+            </div>
+            <% } %>
+
+            <% if (locals.user) { %>
+             
+            
+                <div class="container mt-3 row row-cols-3">
+                    <% blogs.forEach(blog=> { %>
+
+                        <div class="card col" style="width: 18rem; margin-left: 3; margin-right: 3;">
+                            <img src="<%= blog.coverImageUrl %> " class="card-img-top" alt="Img1" width="200px">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= blog.title %>
+                                </h5>
+                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+
+                                <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                            </div>
+
+                        </div>
+                        <% }) %>
+
                 </div>
-              </div>
-        <% }) %>
-    
-    </div>
-    <%- include('./partials/script') %>
+                <% } %>
+                <%- include('./partials/script') %>
 
 
 </body>
+
 </html>
