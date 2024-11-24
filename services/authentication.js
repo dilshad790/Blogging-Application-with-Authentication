@@ -3,6 +3,7 @@ const secretKey="$uperman123"
 function createTokenForUser(user)
 {
     const payload={
+        fullName:user.fullName,
         _id:user._id,
         email:user.email,
         userProfileUrl:user.userProfileUrl,

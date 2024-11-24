@@ -11,7 +11,7 @@ if(!fullName || !email || !password)
   await USER.create({
     fullName:fullName,
     email:email,
-    password:password
+    password:password,
   }) 
 
   return res.redirect("/test");
@@ -23,7 +23,7 @@ const {email,password}= req.body;
 // console.log(email,password);
 try {
   const token=await USER.matchPassword(email,password)
-  return res.cookie("token",token).redirect("/test");
+  return res.cookie("token",token).redirect("/test")
   // res.render("home",{
   //   user:user
   // })

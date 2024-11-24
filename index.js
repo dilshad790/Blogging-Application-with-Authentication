@@ -10,6 +10,7 @@ const cookieParser=require("cookie-parser")
 const checkForAuthentication=require("./middleware/authentication");
 const blogRoutes=require("./routes/blog")
 const Blog=require("./models/blog")
+
 // connect mongodb
 connectMongoDB("mongodb://127.0.0.1:27017/blogApp").then(() => console.log("Database connected")
 )
@@ -35,12 +36,11 @@ app.use(express.static(path.resolve("./public")))
 
 
 app.get("/test", async (req, res) => {
-    // console.log(req.user)
+    console.log(req.user)
     const allBlogs=await Blog.find({})
      res.render("home",{
         user:req.user,
         blogs:allBlogs
-
     })
 })
 
